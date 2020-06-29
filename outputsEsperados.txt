@@ -1,0 +1,19 @@
+	java ReadFile .\test_cases\cuenta1.jaBank
+En total el cliente tiene: 2500000
+
+	java ReadFile .\test_cases\cuenta2.jaBank
+En total el cliente tiene: 2496000
+
+	java ReadFile .\test_cases\fondoMutuo.jaBank
+En total el cliente tiene: 3991
+
+	java ReadFile .\test_cases\plazo1.jaBank
+En total el cliente tiene: 1178154
+
+	java ReadFile .\test_cases\ahorros.jaBank
+Ha habido un problema al hacer este retiro.
+retirar 1000 3
+En total el cliente tiene: 3405194
+
+	java ReadFile .\test_cases\all_in.jaBank
+En total el cliente tiene: 9109035

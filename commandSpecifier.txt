@@ -1,0 +1,13 @@
+crearCuentaVista <int monto>
+crearCuentaCorriente <int monto>
+crearCuentaDeAhorro <int monto>
+crearCuentaDeAhorro <int monto> <float tasa>
+crearFondoMutuo <int monto> <int cuenta> <String(sin espacios) ID>
+crearDepósitoAPlazo <int monto> <int cuenta> <int días>
+abonar <int monto> <int cuenta>
+retirar <int monto> <int cuenta>
+transferir <int monto> <int origen> <int destino>
+actualizarDía
+actualizarPIB <float nuevoPIB>
+cobrarFondoMutuo <String(sin espacios) ID>
+verTotal

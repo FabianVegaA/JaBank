@@ -1,0 +1,29 @@
+actualizarPIB 1.1
+crearCuentaVista 0
+crearCuentaVista 0
+crearCuentaDeAhorro 1000000
+crearCuentaDeAhorro 1000000 1.001
+crearFondoMutuo 1000000 1 Fondo1
+crearDepósitoAPlazo 1000000 2 10
+actualizarDía
+actualizarPIB 0.6
+actualizarDía
+actualizarDía
+retirar 1000 3
+actualizarDía
+actualizarDía
+actualizarDía
+actualizarDía
+actualizarDía
+actualizarDía
+actualizarDía
+actualizarDía
+actualizarDía
+actualizarDía
+retirar 1000 3
+actualizarDía
+actualizarDía
+retirar 1000 3
+actualizarDía
+actualizarDía
+verTotal

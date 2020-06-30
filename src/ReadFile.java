@@ -1,4 +1,6 @@
-import java.io.File;  // Importamos la clase File para manejar nuestro archivo
+package src;
+
+import java.io.File; // Importamos la clase File para manejar nuestro archivo
 import java.io.FileNotFoundException;  // Importamos esta clase para manejar errores
 import java.util.Scanner; // Importamos esto para leer archivos de texto línea por línea
 import java.util.LinkedList; // Importamos para hacer una lista de cuentas bancarias.

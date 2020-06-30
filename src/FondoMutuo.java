@@ -29,6 +29,9 @@ public class FondoMutuo implements FormaDeAhorro {
         return this.id;
     }
 
+    public static float getCrecimiento(){
+        return FondoMutuo.crecimiento;
+    }
     public static void setCrecimiento(float crecimiento) {
         FondoMutuo.crecimiento = crecimiento;
     }

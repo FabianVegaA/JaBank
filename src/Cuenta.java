@@ -2,14 +2,14 @@ package src;
 
 public abstract class Cuenta {
     protected int Saldo;
-    protected int númeroDeCuenta;
+    protected Integer númeroDeCuenta;
 
     public int getSaldo() {
         return this.Saldo;
     }
 
     public int getNúmeroDeCuenta() {
-        return this.númeroDeCuenta;
+        return this.númeroDeCuenta.intValue();
     }
 
     protected void abonar(int monto) {

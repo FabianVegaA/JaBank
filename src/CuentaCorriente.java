@@ -1,8 +1,11 @@
 package src;
 
 public class CuentaCorriente extends Cuenta implements Tarjeta {
-    public CuentaCorriente(int númeroDeCuenta) {
-        this.númeroDeCuenta = númeroDeCuenta;
+    public CuentaCorriente(Integer monto_inicial) {
+        Cuenta.setLast_cuenta(Cuenta.getLast_cuenta() + 1);
+        this.númeroDeCuenta = Cuenta.getLast_cuenta();
+
+        this.Saldo = monto_inicial.intValue();
     }
 
     public void transferir(int númeroDeCuenta, int monto) {

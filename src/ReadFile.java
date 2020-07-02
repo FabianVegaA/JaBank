@@ -36,7 +36,8 @@ public class ReadFile {
 
   // Debe implementar este método
   public static void transferir(Integer monto, Integer origen, Integer destino, String comando) {
-    /* Rellenar aquí */
+    getCuenta(origen).Saldo -= monto.intValue();
+    getCuenta(destino).Saldo += monto.intValue();
   }
 
   public static void main(String[] args) {
@@ -51,7 +52,9 @@ public class ReadFile {
         String[] command = data.split("\\s+");
         if(command[0].equals("crearCuentaVista")) {
           cuentas.add( new CuentaVista(Integer.parseInt(command[1]))); // Crea una nueva cuenta vista, indicando monto inicial
-        } else if(command[0].equals("crearCuentaDeAhorro")) {
+        } 
+
+        else if(command[0].equals("crearCuentaDeAhorro")) {
           CuentaDeAhorro cuenta;
           if(command.length > 2) {
             cuenta = new CuentaDeAhorro(Integer.parseInt(command[1]), Float.parseFloat(command[2])); // Crea una nueva cuenta de ahorro, indicando monto inicial y tasa
@@ -60,21 +63,33 @@ public class ReadFile {
           }
           cuentas.add(cuenta);
           ahorros.add(cuenta);
-        } else if(command[0].equals("crearCuentaCorriente")) {
+        } 
+
+        else if(command[0].equals("crearCuentaCorriente")) {
           cuentas.add( new CuentaCorriente(Integer.parseInt(command[1]))); // Crea una nueva cuenta vista, indicando monto inicial
-        } else if(command[0].equals("crearDepósitoAPlazo")) {
+        }
+
+        else if(command[0].equals("crearDepósitoAPlazo")) {
           Cuenta cuenta = getCuenta(Integer.parseInt(command[2]));
           ahorros.add( new DepósitoAPlazo(Integer.parseInt(command[1]), cuenta, Integer.parseInt(command[3]))); // Crea un nuevo depósito a plazo, indicando monto inicial, cuenta y duración en días.
-        } else if(command[0].equals("crearFondoMutuo")) {
+        } 
+
+        else if(command[0].equals("crearFondoMutuo")) {
           Cuenta cuenta = getCuenta(Integer.parseInt(command[2]));
           ahorros.add( new FondoMutuo(Integer.parseInt(command[1]), cuenta, command[3])); // Crea un nuevo fondo mutuo, indicando monto inicial, cuenta e ID.
-        } else if(command[0].equals("cobrarFondoMutuo")) {
+        } 
+
+        else if(command[0].equals("cobrarFondoMutuo")) {
           FondoMutuo fondo = getFondoMutuo(command[1]);
           fondo.cobrar(); // Transfiere todo el dinero de cierto fondo mutuo a su cuenta asociada
-        } else if (command[0].equals("abonar")) {
+        } 
+
+        else if (command[0].equals("abonar")) {
           Cuenta cuenta = getCuenta(Integer.parseInt(command[2]));
           cuenta.abonar(Integer.parseInt(command[1])); // Le agrega dinero a una cuenta
-        } else if (command[0].equals("retirar")) {
+        } 
+
+        else if (command[0].equals("retirar")) {
           Cuenta cuenta = getCuenta(Integer.parseInt(command[2]));
           try {
             cuenta.retirar(Integer.parseInt(command[1])); // Le quita dinero a una cuenta
@@ -82,17 +97,25 @@ public class ReadFile {
             System.out.println("Ha habido un problema al hacer este retiro.");
             System.out.println(data);
           }
-        } else if (command[0].equals("transferir")) {
+        } 
+
+        else if (command[0].equals("transferir")) {
           transferir(Integer.parseInt(command[1]), Integer.parseInt(command[2]), Integer.parseInt(command[3]), data);
-        } else if(command[0].equals("actualizarDía")) {
+        } 
+
+        else if(command[0].equals("actualizarDía")) {
           Iterator<FormaDeAhorro> iterator = ahorros.iterator();
           while(iterator.hasNext()) { // Por cada forma de ahorro de la lista, aplica el interés correspondiente
             FormaDeAhorro ahorro = iterator.next();
             ahorro.actualizar();
           }
-        } else if(command[0].equals("actualizarPIB")) {
+        } 
+
+        else if(command[0].equals("actualizarPIB")) {
           FondoMutuo.setCrecimiento(Float.parseFloat(command[1]));
-        } else if(command[0].equals("verTotal")) {
+        } 
+        
+        else if(command[0].equals("verTotal")) {
           Integer suma = 0; // Sumamos los montos de todos los elementos listados
           Iterator<FormaDeAhorro> iterator = ahorros.iterator();
           while(iterator.hasNext()) {

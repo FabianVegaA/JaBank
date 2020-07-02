@@ -1,12 +1,15 @@
 package src;
 
 public class CuentaVista extends Cuenta implements Tarjeta {
-    
-    public CuentaVista(int númeroDeCuenta){
-        this.númeroDeCuenta = númeroDeCuenta;
+
+    public CuentaVista(Integer monto_inicial) {
+        Cuenta.setLast_cuenta(Cuenta.getLast_cuenta() + 1);
+        this.númeroDeCuenta = Cuenta.getLast_cuenta();
+        
+        this.Saldo = monto_inicial.intValue();
     }
-    
-    public void transferir(int númeroDeCuenta, int monto){
+
+    public void transferir(int númeroDeCuenta, int monto) {
         this.retirar(monto);
         this.abonar(monto);
     }

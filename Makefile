@@ -1,10 +1,13 @@
 all:JaBank
 
 JaBank: compiler
-	java src/ReadFile test_case/cuenta2.jaBank
+	
 
 compiler: 
 	javac src/*.java
 
+move:
+	mv src/*.class bin/
+
 clean:
-	rm src/*.class
+	rm bin/*.class src/*.class

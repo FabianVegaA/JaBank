@@ -1,7 +1,7 @@
 package src;
 
 public class DepósitoAPlazo implements FormaDeAhorro {
-    private final Double tasa;
+    private final float tasa;
     private int dias;
     private int monto;
     private Cuenta cuenta;
@@ -11,24 +11,26 @@ public class DepósitoAPlazo implements FormaDeAhorro {
         this.monto = initialMonto;
         this.dias = dias;
 
-        this.tasa = 1 + (((double) (1f - FondoMutuo.getCrecimiento())) / 3);
+        this.tasa = (float) (1d + (FondoMutuo.getCrecimiento() - 1d) / 3);
     }
 
     public void actualizar() {
-        monto *= tasa;
+        if (this.dias > 0) {
+            monto = Math.round(getMonto() * tasa);
+            this.dias -= 1;
+        }
+
+        if (this.dias <= 0) {
+            cobrar();
+        }
     }
 
     public int getMonto() {
         return monto;
     }
 
-    protected void retirar() {
-        if (this.dias == 0) {
-            this.cuenta.abonar(this.monto);
-            this.monto = 0;
-        } else {
-            System.out.println("Aún no es tiempo para retirar, quedan " + Integer.toString(this.dias)
-                    + " días para retirar su deposito");
-        }
+    protected void cobrar() {
+        this.cuenta.abonar(this.monto);
+        this.monto = 0;
     }
 }

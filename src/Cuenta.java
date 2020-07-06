@@ -6,7 +6,7 @@ public abstract class Cuenta {
 
     private static int last_cuenta;
 
-    protected static void setLast_cuenta(Integer new_number) {
+    protected static void setLast_cuenta(Integer new_number) {// This implementation is
         last_cuenta = new_number.intValue();
     }
 
@@ -26,16 +26,12 @@ public abstract class Cuenta {
         this.Saldo += monto;
     }
 
-    protected void retirar(int monto) {
-        try {
-            if (this.Saldo >= monto) {
-                this.Saldo -= monto;
-            } else {
-                throw new Exception("Excede el máximo");
-            }
-
-        } catch (Exception e) {
-            System.out.println("No tiene saldo suficiente");
+    protected void retirar(int monto) throws Exception {
+        if (this.Saldo - monto >= 0) {
+            this.Saldo -= monto;
+        } else {
+            System.out.println(this.getSaldo());
+            throw new Exception("Excede el máximo");
         }
     }
 }

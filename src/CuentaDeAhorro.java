@@ -18,30 +18,30 @@ public class CuentaDeAhorro extends Cuenta implements FormaDeAhorro {
 
         this.Saldo = monto_inicial.intValue();
         this.tasa = 1.0001f;
-
     }
 
     public void actualizar() {
-        Saldo *= tasa;
+        Saldo = Math.round(getSaldo() * tasa);
+        if (this.días > 0) {
+            this.días--;
+        }
     }
 
     public int getMonto() {
-        return Saldo;
+        return this.Saldo;
     }
 
-    protected void retirar(int monto) {
-        if (this.días == 0) {
-            try {
-                if (this.Saldo >= monto) {
-                    this.Saldo -= monto;
-                    this.días += 7;
-                } else {
-                    throw new Exception();
-                }
-
-            } catch (Exception e) {
-                System.out.println("Monto solicitado es mayor a su saldo");
+    protected void retirar(int monto) throws Exception {
+        if (this.días <= 0) {
+            if (this.Saldo - monto > 0) {
+                this.Saldo -= monto;
+                this.días += 7;
+            } else {
+                throw new Exception();
             }
+        }
+        else{
+            throw new Exception();
         }
     }
 

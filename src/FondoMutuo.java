@@ -13,7 +13,7 @@ public class FondoMutuo implements FormaDeAhorro {
     }
 
     public void actualizar() {
-        this.monto *= FondoMutuo.crecimiento;
+        this.monto = Math.round(getMonto() * getCrecimiento());
     }
 
     public int getMonto() {
@@ -21,7 +21,7 @@ public class FondoMutuo implements FormaDeAhorro {
     }
 
     protected void cobrar() {
-        this.cuenta.abonar(monto);
+        this.cuenta.abonar(getMonto());
         this.monto = 0;
     }
 
@@ -29,9 +29,10 @@ public class FondoMutuo implements FormaDeAhorro {
         return this.id;
     }
 
-    public static float getCrecimiento(){
+    public static float getCrecimiento() {
         return FondoMutuo.crecimiento;
     }
+
     public static void setCrecimiento(float crecimiento) {
         FondoMutuo.crecimiento = crecimiento;
     }

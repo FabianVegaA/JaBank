@@ -9,6 +9,18 @@ public class CuentaCorriente extends Cuenta implements Tarjeta {
     }
 
     public void transferir(int númeroDeCuenta, int monto) {
+        try {
+            ReadFile.getCuenta(númeroDeCuenta).abonar(monto);
+
+            this.retirar(monto);
+
+        } catch (NullPointerException ex) {
+            System.out.println("La cuenta :" + númeroDeCuenta + " no ha sido  encontrada");
+        }
+    }
+
+    protected void retirar(int monto) {
+        this.Saldo -= monto;
 
     }
 }

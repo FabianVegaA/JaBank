@@ -21,6 +21,5 @@ public class CuentaCorriente extends Cuenta implements Tarjeta {
 
     protected void retirar(int monto) {
         this.Saldo -= monto;
-
     }
 }

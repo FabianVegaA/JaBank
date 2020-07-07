@@ -11,22 +11,22 @@ public class DepósitoAPlazo implements FormaDeAhorro {
         this.monto = initialMonto;
         this.dias = dias;
 
-        this.tasa = (float) (1d + (FondoMutuo.getCrecimiento() - 1d) / 3);
+        this.tasa = 1f + (FondoMutuo.getCrecimiento() - 1f) / 3;
     }
 
     public void actualizar() {
         if (this.dias > 0) {
-            monto = Math.round(getMonto() * tasa);
+            this.monto = Math.round(getMonto() * tasa);
             this.dias -= 1;
         }
 
         if (this.dias <= 0) {
-            cobrar();
+            this.cobrar();
         }
     }
 
     public int getMonto() {
-        return monto;
+        return this.monto;
     }
 
     protected void cobrar() {

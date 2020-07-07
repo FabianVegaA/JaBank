@@ -13,7 +13,8 @@ public class CuentaVista extends Cuenta implements Tarjeta {
         try {
             this.retirar(monto);
         } catch (Exception ex) {
-            System.out.println("Saldo insuficiente para hacer esta operacion.");
+            System.out.println("Ha habido un problema al hacer esta transferencia.");
+            System.out.println("transferir " + monto + " " + getNúmeroDeCuenta() + " " + númeroDeCuenta);
         }
 
         this.abonar(monto);

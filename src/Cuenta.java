@@ -30,7 +30,6 @@ public abstract class Cuenta {
         if (this.Saldo - monto >= 0) {
             this.Saldo -= monto;
         } else {
-            System.out.println(this.getSaldo());
             throw new Exception("Excede el máximo");
         }
     }
